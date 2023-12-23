@@ -58,4 +58,19 @@ router.post("/createdoc", requireLogin, async (req, res) => {
   }
 });
 
+router.delete("/deletedoc/:docid", requireLogin, (req, res) => {
+  console.log("/deletedoc: ", req.body);
+
+  Document.findByIdAndDelete(req.params.docid)
+    .then((doc) => {
+      if (!doc) {
+        res.status(404).json({ deletedoc_data: "Document not found" });
+      }
+      res.status(200).json({ deletedoc_data: doc });
+    })
+    .catch((err) => {
+      console.error("deletedoc api error: " + err);
+    });
+});
+
 module.exports = router;
