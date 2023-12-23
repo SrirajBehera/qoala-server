@@ -16,6 +16,12 @@ app.use(cors({ origin: "*" }));
 
 app.use(express.json());
 
+require('./models/user');
+db.model("User");
+
+require('./models/document');
+db.model("Document");
+
 app.use(require("./routes/auth"));
 
 app.use(notFound);
