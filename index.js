@@ -12,13 +12,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //cors
 const cors = require("cors");
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: "*" }));
 
 app.use(express.json());
+
+app.use(require("./routes/auth"));
 
 app.use(notFound);
 app.use(errorHandler);
 
 app.listen(process.env.PORT, () => {
   console.log(`The Server is running on port: ${process.env.PORT}`);
-})
+});
