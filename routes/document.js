@@ -89,11 +89,11 @@ router.put("/editdoc/:docid", requireLogin, (req, res) => {
     {
       identification_number: identification_number,
       name: name,
-      lastName: last_name,
+      last_name: last_name,
       date_of_birth: date_of_birth,
       date_of_issue: date_of_issue,
       date_of_expiry: date_of_expiry,
-      save_level: success_level,
+      success_level: success_level,
       raw_ocr_data: raw_ocr_data,
       image_link: image_link,
     },
