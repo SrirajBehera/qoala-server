@@ -70,6 +70,45 @@ router.post("/createdoc", requireLogin, async (req, res) => {
   }
 });
 
+router.put("/editdoc/:docid", requireLogin, (req, res) => {
+  console.log("editdoc: " + req.body);
+  const {
+    identification_number,
+    name,
+    last_name,
+    date_of_birth,
+    date_of_issue,
+    date_of_expiry,
+    success_level,
+    raw_ocr_data,
+    image_link,
+  } = req.body;
+
+  Document.findByIdAndUpdate(
+    req.params.docid,
+    {
+      identification_number: identification_number,
+      name: name,
+      lastName: last_name,
+      date_of_birth: date_of_birth,
+      date_of_issue: date_of_issue,
+      date_of_expiry: date_of_expiry,
+      save_level: success_level,
+      raw_ocr_data: raw_ocr_data,
+      image_link: image_link,
+    },
+    {
+      new: true,
+    }
+  )
+    .then((result) => {
+      res.status(200).json({ editdoc_data: result });
+    })
+    .catch((err) => {
+      res.status(422).json({ editdoc_data: err });
+    });
+});
+
 router.delete("/deletedoc/:docid", requireLogin, (req, res) => {
   console.log("/deletedoc: ", req.body);
 
