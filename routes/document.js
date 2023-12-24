@@ -16,6 +16,18 @@ router.get("/mydocs", requireLogin, (req, res) => {
     });
 });
 
+router.get("/mydocs/:docid", requireLogin, (req, res) => {
+  console.log("/mydoc: ", req.body);
+  Document.findById(req.params.docid)
+    .then((result) => {
+      console.log("/mydoc result: ", result);
+      res.status(200).json({ mydoc_data: result });
+    })
+    .catch((err) => {
+      console.error("/mydocs fetch api error: ", err);
+    });
+});
+
 router.post("/createdoc", requireLogin, async (req, res) => {
   console.log(req.body);
   const { image_link } = req.body;

@@ -23,6 +23,7 @@ require('./models/document');
 db.model("Document");
 
 app.use(require("./routes/auth"));
+app.use(require("./routes/document"));
 
 app.use(notFound);
 app.use(errorHandler);
