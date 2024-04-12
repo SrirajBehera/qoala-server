@@ -4,6 +4,8 @@
 
 Server hosted on Cyclic: [https://fuzzy-colt-button.cyclic.app/](https://fuzzy-colt-button.cyclic.app/)
 
+Client hosted on Vercel: [https://qoala-client.vercel.app/](https://qoala-client.vercel.app/)
+
 ## Technologies used
 
 Node, Express, MongoDB and Google Cloud Vision API 
